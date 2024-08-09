@@ -2,7 +2,7 @@
 # Terminal
 
 # Download Ollama from https://ollama.com/download
-# Run the command on terimal: ollama run llama3
+# Run the command on terminal: ollama run llama3
 
 # Create a virtual enviornment for AI called venv
 #     python3 -m venv /Users/ntnmathur/venv
@@ -27,6 +27,8 @@
 import asyncio
 from ollama import AsyncClient
 
+model_name="llama3:70b"
+
 async def chat():
     """
     Stream a chat from Llama using the AsyncClient.
@@ -36,7 +38,7 @@ async def chat():
         "content": "Tell me an interesting fact about elephants"
     }
     async for part in await AsyncClient().chat(
-        model="llama3", messages=[message], stream=True
+        model=model_name, messages=[message], stream=True
     ):
         print(part["message"]["content"], end="", flush=True)
 
